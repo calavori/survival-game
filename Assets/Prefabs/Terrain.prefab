@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 5655078011830595738}
   - component: {fileID: 5655078011830595736}
   - component: {fileID: 5655078011830595739}
+  - component: {fileID: 760260823}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -208,6 +209,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5655078011830595685}
   m_Mesh: {fileID: 0}
+--- !u!64 &760260823
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655078011830595685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5655078012076495568
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +274,7 @@ MonoBehaviour:
   octaves: 5
   persistance: 0.021
   lancunarity: 1
-  seed: 69
+  seed: 80
   offset: {x: 0.07, y: -1.97}
   meshHeightMutiplier: 6.24
   meshHeightCurve:
@@ -296,7 +311,7 @@ MonoBehaviour:
     height: 0.35
     color: {r: 0.950277, g: 1, b: 0.66415095, a: 0}
   - name: land
-    height: 0.4
+    height: 0.5
     color: {r: 0.06190812, g: 0.8867924, b: 0.40450177, a: 0}
   - name: forest
     height: 1
@@ -316,6 +331,7 @@ MonoBehaviour:
   textureRenderer: {fileID: 5655078010347194913}
   meshFilter: {fileID: 5655078011830595739}
   meshRenderer: {fileID: 5655078011830595736}
+  meshCollider: {fileID: 760260823}
 --- !u!114 &985515964
 MonoBehaviour:
   m_ObjectHideFlags: 0

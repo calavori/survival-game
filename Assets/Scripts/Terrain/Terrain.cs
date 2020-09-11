@@ -12,6 +12,6 @@ public class Terrain : MonoBehaviour
     void Start()
     {
         mapGenerator = FindObjectOfType<MapGenerator>();
-        mapGenerator.DrawMapInEditor();
+        mapGenerator.DrawMap();
     }
 }

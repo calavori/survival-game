@@ -15,13 +15,13 @@ public class MapGeneratorEditor : Editor
             // Set auto update if on change
             if (mapGen.autoUpdate)
             {
-                mapGen.DrawMapInEditor();
+                mapGen.DrawMap();
             }
         }
         // Set generate map button
         if (GUILayout.Button("Generate"))
         {
-            mapGen.DrawMapInEditor();
+            mapGen.DrawMap();
         }
     }
 }
