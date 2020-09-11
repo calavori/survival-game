@@ -56,14 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Terrain\Noise.cs" />
+    <Compile Include="Assets\Scripts\Terrain\Data\UpdatetableData.cs" />
     <Compile Include="Assets\Scripts\Terrain\MeshGenerator.cs" />
+    <Compile Include="Assets\Scripts\Terrain\Data\NoiseData.cs" />
     <Compile Include="Assets\Scripts\Terrain\MapGenerator.cs" />
+    <Compile Include="Assets\For test\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\For test\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\Terrain\TextureGenerator.cs" />
     <Compile Include="Assets\Scripts\Terrain\Terrain.cs" />
     <Compile Include="Assets\Scripts\Terrain\FalloffGenerator.cs" />
     <Compile Include="Assets\Scripts\Terrain\HideOnPlay.cs" />
+    <Compile Include="Assets\Scripts\Terrain\Data\TerrainData.cs" />
     <Compile Include="Assets\Scripts\Terrain\MapDisplay.cs" />
-    <Compile Include="Assets\Scripts\Terrain\Data\NoiseData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
