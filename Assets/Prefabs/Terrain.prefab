@@ -268,54 +268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283ec4f5620ce144c81f465ba3ebdb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 2
+  drawMode: 1
+  noiseData: {fileID: 11400000, guid: b7d8ecc1b259a41419c0b1cedb52378e, type: 2}
+  terrainData: {fileID: 11400000, guid: 63791398a864aef4ba0e41a6400ed4ef, type: 2}
+  textureData: {fileID: 11400000, guid: 7f9716425b802ca469135f5c175f82b0, type: 2}
+  terrainMaterial: {fileID: 2100000, guid: c0ea4929604344842ada13b477576bb6, type: 2}
   levelOfDetail: 0
-  noiseScale: 19.16
-  octaves: 5
-  persistance: 0.021
-  lancunarity: 1
-  seed: 80
-  offset: {x: 0.07, y: -1.97}
-  meshHeightMutiplier: 6.24
-  meshHeightCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   autoUpdate: 1
-  useFallOff: 1
-  regions:
-  - name: water
-    height: 0.3
-    color: {r: 0.49803922, g: 0.8039216, b: 1, a: 0}
-  - name: sand
-    height: 0.35
-    color: {r: 0.950277, g: 1, b: 0.66415095, a: 0}
-  - name: land
-    height: 0.5
-    color: {r: 0.06190812, g: 0.8867924, b: 0.40450177, a: 0}
-  - name: forest
-    height: 1
-    color: {r: 0.08360624, g: 0.5754717, b: 0.2809597, a: 0}
 --- !u!114 &5655078012076495575
 MonoBehaviour:
   m_ObjectHideFlags: 0
