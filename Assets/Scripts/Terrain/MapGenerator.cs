@@ -17,7 +17,7 @@ public class MapGenerator : MonoBehaviour
     public Material terrainMaterial;
 
     public const int mapChunkSize = 241;
-    [Range(0, 5)]
+    [Range(0, 6)]
     public int levelOfDetail;
 
     public bool autoUpdate;

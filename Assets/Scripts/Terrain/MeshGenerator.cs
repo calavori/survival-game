@@ -18,7 +18,7 @@ public class MeshGenerator
         int verticesPerLine = (width - 1) / meshSimplificationIncrement + 1; 
 
         // Initialize mesh data
-        MeshData meshData = new MeshData(verticesPerLine, verticesPerLine);
+        MeshData meshData = new MeshData(verticesPerLine);
         // Initialize index to keep track the vertex
         int vertexIndex = 0;
 
@@ -41,6 +41,8 @@ public class MeshGenerator
                 vertexIndex++;
             }
         }
+
+        meshData.FlatShading();
         return meshData;
     }
 }
@@ -55,11 +57,11 @@ public class MeshData
     int trianglesIndex;
 
     // Initialize vertices, uv and triangles 
-    public MeshData(int meshWidth, int meshHeight)
+    public MeshData(int verticesPerLine)
     {
-        vertices = new Vector3[meshWidth * meshHeight];
-        uvs = new Vector2[meshWidth * meshHeight];
-        triangles = new int[(meshWidth - 1) * (meshHeight - 1) * 6];
+        vertices = new Vector3[verticesPerLine * verticesPerLine];
+        uvs = new Vector2[verticesPerLine * verticesPerLine];
+        triangles = new int[(verticesPerLine - 1) * (verticesPerLine - 1) * 6];
     }
 
     // Add triangles to mesh by 3 vertices
@@ -69,6 +71,23 @@ public class MeshData
         triangles[trianglesIndex + 1] = b;
         triangles[trianglesIndex + 2] = c;
         trianglesIndex+=3;
+    }
+
+    // Flatshading for low poly
+    public void FlatShading()
+    {
+        Vector3[] flatShadedVertices = new Vector3[triangles.Length];
+        Vector2[] flatShadedUvs = new Vector2[triangles.Length];
+
+        for (int i = 0; i < triangles.Length; i++)
+        {
+            flatShadedVertices[i] = vertices[triangles[i]];
+            flatShadedUvs[i] = uvs[triangles[i]];
+            triangles[i] = i;
+        }
+
+        vertices = flatShadedVertices;
+        uvs = flatShadedUvs;
     }
 
     public Mesh CreateMesh()

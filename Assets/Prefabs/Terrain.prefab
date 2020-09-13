@@ -273,7 +273,7 @@ MonoBehaviour:
   terrainData: {fileID: 11400000, guid: 63791398a864aef4ba0e41a6400ed4ef, type: 2}
   textureData: {fileID: 11400000, guid: 7f9716425b802ca469135f5c175f82b0, type: 2}
   terrainMaterial: {fileID: 2100000, guid: c0ea4929604344842ada13b477576bb6, type: 2}
-  levelOfDetail: 0
+  levelOfDetail: 6
   autoUpdate: 1
 --- !u!114 &5655078012076495575
 MonoBehaviour:

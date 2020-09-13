@@ -18,8 +18,9 @@ public class MapDisplay : MonoBehaviour
 
     public void DrawMesh(MeshData meshData)
     {
-        meshFilter.sharedMesh = meshData.CreateMesh();
-        meshCollider.sharedMesh = meshFilter.sharedMesh;
+        Mesh mesh = meshData.CreateMesh();
+        meshCollider.sharedMesh = mesh;
+        meshFilter.sharedMesh = mesh;    
     }
     
 }
