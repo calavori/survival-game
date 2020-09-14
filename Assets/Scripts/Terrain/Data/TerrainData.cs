@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class TerrainData : UpdatetableData
 {
-    public float uniformScale = 5f;
+    public float uniformScale = 1f;
     public float meshHeightMutiplier;
     public AnimationCurve meshHeightCurve;
     public bool useFallOff;
