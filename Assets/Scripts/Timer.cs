@@ -16,6 +16,14 @@ public class Timer : MonoBehaviour
         }
     }
 
+    public float timePercent
+    {
+        get
+        {
+            return (_FramesUntilEndDay - oneDaysTimer) / _FramesUntilEndDay;
+        }
+    }
+
 
     public float dayNightTimer;
     public float oneDaysTimer;
