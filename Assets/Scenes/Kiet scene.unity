@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
---- !u!43 &1362440461
+--- !u!43 &1436028621
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -541,6 +541,28 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1813877542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5057317502427365137, guid: a70bbde12b7e6664a8b5a57668bebd01, type: 3}
+  m_PrefabInstance: {fileID: 8831235768974982240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1813877543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813877542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0af7ca0c41a5546a6ea83a30a53e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeAccel: 1
+  dayNightTimer: 2592000
+  oneDaysTimer: 2592000
+  daysCount: 0
+  dayState: 0
 --- !u!1001 &2761577905834485180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,10 +678,10 @@ PrefabInstance:
     - target: {fileID: 8831235769339449332, guid: a70bbde12b7e6664a8b5a57668bebd01, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1362440461}
+      objectReference: {fileID: 1436028621}
     - target: {fileID: 8831235769339449335, guid: a70bbde12b7e6664a8b5a57668bebd01, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1362440461}
+      objectReference: {fileID: 1436028621}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a70bbde12b7e6664a8b5a57668bebd01, type: 3}
