@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7341694f7bfc0e24c8152235630b41d8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - directionalLight: {instanceID: 0}
+  - preset: {instanceID: 0}
+  - daySkyBox: {instanceID: 0}
+  - nightSkyBox: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
