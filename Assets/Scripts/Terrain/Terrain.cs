@@ -4,32 +4,63 @@ using UnityEngine;
 
 public class Terrain : MonoBehaviour
 {
-    public float minX;
-    public float minZ;
-    public float maxX;
-    public float maxZ;
-
-    public float landHeight;
-
-    static MapGenerator mapGenerator;
-    Mesh mesh;
+    public TerrainDetail terrainDetail;
 
     void Awake()
     {
         // Generate map
-        mapGenerator = FindObjectOfType<MapGenerator>();
+        MapGenerator mapGenerator  = FindObjectOfType<MapGenerator>();
         mapGenerator.Generate();
 
         // Get mesh of map
         GameObject mapMesh = GameObject.Find("Map Mesh");
+        terrainDetail = new TerrainDetail(mapMesh);
+    }
+}
+
+public class TerrainDetail
+{
+    public readonly float minX;
+    public readonly float minZ;
+    public readonly float maxX;
+    public readonly float maxZ;
+
+    public readonly float sandToLandHeight;
+    public readonly float landToHighLandHeight;
+
+    MeshCollider collider;
+    RaycastHit hit;
+
+    public TerrainDetail(GameObject mesh)
+    {
+        // Get collider
+        collider = mesh.GetComponent<MeshCollider>();
 
         // Get coord of 4 bound of map
-        MeshFilter meshFilter = mapMesh.GetComponent<MeshFilter>();
-        Bounds bounds = meshFilter.sharedMesh.bounds;
+        Bounds bounds = collider.sharedMesh.bounds;
+        float minX = (bounds.center.x - bounds.extents.x) * 10;
+        float minZ = (bounds.center.z - bounds.extents.z) * 10;
+        float maxX = (bounds.center.x + bounds.extents.x) * 10;
+        float maxZ = (bounds.center.z + bounds.extents.z) * 10;
 
-        minX = (bounds.center.x - bounds.extents.x) * 10;
-        minZ = (bounds.center.z - bounds.extents.z) * 10;
-        maxX = (bounds.center.x + bounds.extents.x) * 10;
-        maxZ = (bounds.center.z + bounds.extents.z) * 10;
+        // Get material of map to get height of each regions
+        MeshRenderer meshRenderer = mesh.GetComponent<MeshRenderer>();
+        Material material = meshRenderer.material;
+        float sandToLandHeight = material.GetFloat("Vector1_781E3A14");
+        float landToHighLandHeight = material.GetFloat("Vector1_B2A71F2B");
+    }
+
+    // Get coord of y by x and z
+    public Vector3 GetCoord(float x, float z)
+    {
+        Ray ray = new Ray(new Vector3(x, 50, z), Vector3.down);
+        if (collider.Raycast(ray, out hit, 2.0f * 50f))
+        {
+            return hit.point;
+        }
+        else
+        {
+            return new Vector3(0,0,0);
+        }
     }
 }
