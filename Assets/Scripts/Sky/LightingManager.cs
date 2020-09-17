@@ -7,10 +7,10 @@ using UnityEngine;
 public class LightingManager : MonoBehaviour
 {
     //Scene References
-    [SerializeField] private Light directionalLight;
-    [SerializeField] private LightingPreset preset;
-    [SerializeField] private Material daySkyBox;
-    [SerializeField] private Material nightSkyBox;
+    [SerializeField] private Light directionalLight = null;
+    [SerializeField] private LightingPreset preset = null;
+    [SerializeField] private Material daySkyBox = null;
+    [SerializeField] private Material nightSkyBox = null;
 
     Timer timer;
 

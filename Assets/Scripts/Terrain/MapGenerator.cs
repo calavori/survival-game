@@ -27,12 +27,21 @@ public class MapGenerator : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
-            DrawMap();
+            DrawMapInEditor();
         }
     }
 
+    public void Generate()
+    {
+        // Generate map
+        MapData mapData = GenerateMapData();
+        MapDisplay display = FindObjectOfType<MapDisplay>();
+
+        display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap, terrainData.meshHeightMutiplier, terrainData.meshHeightCurve, levelOfDetail));
+    }
+
     
-    public void DrawMap()
+    public void DrawMapInEditor()
     {
         // Generate map
         MapData mapData = GenerateMapData();
