@@ -114,7 +114,7 @@ public class Timer : MonoBehaviour
         if (oneDaysTimer <= 0)
         {
             oneDaysTimer = _FramesUntilEndDay;
-            daysCount += (1 * timeAccel);
+            daysCount += 1;
         }
 
     }

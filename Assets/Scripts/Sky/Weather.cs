@@ -18,7 +18,9 @@ public class Weather : MonoBehaviour
     {
         timer = GetComponent<Timer>();
         rainScript = GameObject.Find("Rain").GetComponent<RainScript>();
-        rainScript.enabled = false;
+
+        rainScript.RainIntensity = 0;
+        rainScript.EnableWind = false;
 
         // Todo load save 
 
@@ -40,14 +42,18 @@ public class Weather : MonoBehaviour
         {
             if (weatherState == WeatherState.Sun)
             {
-                rainScript.enabled = true;
+                rainScript.RainIntensity = Random.Range(0.05f, 0.68f);
+                rainScript.EnableWind = true;
+
                 weatherState = WeatherState.Rain;
                 // Random time to change weather from 5h - 2d
                 timeToChangeWeather = Random.Range(18000 * 60, 2* 21600 * 60);
             }
             else
             {
-                rainScript.enabled = false;
+                rainScript.RainIntensity = 0;
+                rainScript.EnableWind = false;
+
                 weatherState = WeatherState.Sun;
                 // Random time to change weather from 1d - 6d
                 timeToChangeWeather = Random.Range(21600 * 60, 6 * 21600 * 60);
