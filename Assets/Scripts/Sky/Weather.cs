@@ -19,7 +19,7 @@ public class Weather : MonoBehaviour
         timer = GetComponent<Timer>();
         rainScript = GameObject.Find("Rain").GetComponent<RainScript>();
 
-        rainScript.RainIntensity = 0;
+        //rainScript.RainIntensity = 0;
         rainScript.EnableWind = false;
 
         // Todo load save 
