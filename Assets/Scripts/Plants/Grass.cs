@@ -61,7 +61,7 @@ public class Grass : MonoBehaviour
     void GrowUp()
     {   if (growth <= 1f)
         {
-            growth += growSpeed * (float)timer.lastFrameTime;
+            growth += growSpeed * timer.lastFrameTime;
             float scaleSize = (maxScaleSize - minScaleSize) * growth;
             transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
         }
@@ -71,12 +71,12 @@ public class Grass : MonoBehaviour
     {
         if (growth >= 1 && reproduction <= 1f)
         {
-            reproduction += reproductSpeed * (float)timer.lastFrameTime;
+            reproduction += reproductSpeed * timer.lastFrameTime;
         }
         if (reproduction >= 1f)
         {
             reproduction = 0f;
-            print("give birth");
+            //print("give birth");
         }
     }
 }

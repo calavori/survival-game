@@ -25,40 +25,56 @@ public class Weather : MonoBehaviour
         // Todo load save 
 
         // If new game
-        if (timer.dayNightTimer == 0 && timer.daysCount == 0 && timer.oneDaysTimer == 0)
+        if (timer.daysCount == 0 && timer.dayTimer == 0)
         {
             // Default is sun
             weatherState = WeatherState.Sun;
             // Random time to change weather from 3d - 4d
-            timeToChangeWeather = Random.Range(3 * 21600 * 60, 4 * 21600 * 60);
+            timeToChangeWeather = Random.Range(3 * 21600, 4 * 21600);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeToChangeWeather -= 1 * timer.timeAccel;
+        // Count down weather timer
+        timeToChangeWeather -= timer.lastFrameTime;
+        SwitchWeather();
+        ApplyWeather();
+    }
+
+    void SwitchWeather()
+    {
         if (timeToChangeWeather <= 0)
         {
             if (weatherState == WeatherState.Sun)
             {
-                rainScript.RainIntensity = Random.Range(0.05f, 0.68f);
-                rainScript.EnableWind = true;
-
+                // Change weather
                 weatherState = WeatherState.Rain;
                 // Random time to change weather from 5h - 2d
-                timeToChangeWeather = Random.Range(18000 * 60, 2* 21600 * 60);
+                timeToChangeWeather = Random.Range(18000, 2 * 21600);
             }
             else
             {
-                rainScript.RainIntensity = 0;
-                rainScript.EnableWind = false;
-
+                // Change weather
                 weatherState = WeatherState.Sun;
                 // Random time to change weather from 1d - 6d
-                timeToChangeWeather = Random.Range(21600 * 60, 6 * 21600 * 60);
+                timeToChangeWeather = Random.Range(21600, 6 * 21600);
             }
         }
-        
+    }
+
+    void ApplyWeather()
+    {
+        if (weatherState == WeatherState.Sun)
+        {
+            rainScript.RainIntensity = 0;
+            rainScript.EnableWind = false;
+        }
+        else
+        {
+            rainScript.RainIntensity = Random.Range(0.05f, 0.68f);
+            rainScript.EnableWind = true;
+        }
     }
 }

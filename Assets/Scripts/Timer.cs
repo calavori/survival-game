@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     public float timeAccel;
 
     // Time.delta after accelerate
-    public double lastFrameTime
+    public float lastFrameTime
     {
         get
         {
@@ -20,31 +20,40 @@ public class Timer : MonoBehaviour
     {
         get
         {
-            return (float)((timeUntilEndDay - oneDaysTimer) / timeUntilEndDay);
+            return (oneDayToSecond - dayTimer) / oneDayToSecond;
         }
     }
 
 
-    public double dayNightTimer;
-    public double oneDaysTimer;
-    public double daysCount;
+    public float dayTimer;
+    public float daysCount;
 
     public enum DayState { Day, Night };
-    public DayState dayState;
+    public DayState dayState
+    {
+        get
+        {
+            if (dayTimer <= 64800 && dayTimer > 21600)
+            {
+                return DayState.Day;
+            }
+            else
+            {
+                return DayState.Night;
+            }
+        }
+    }
 
-    private const double timeUntilEnd12h = 43200 * 60;         // Count down second to end 12h
-    private const double timeUntilEndDay = 86400 * 60;         // Count down second to end a day = 24h
+    private const float oneDayToSecond = 86400;         
 
     // Start is called before the first frame update
     void Start()
     {
         // Todo Load start time in save file
         // If new game, game start at 12h at noon
-        if (dayNightTimer == 0 && daysCount == 0 && oneDaysTimer == 0)
+        if (daysCount == 0 && dayTimer == 0)
         {
-            dayState = DayState.Day;
-            dayNightTimer = timeUntilEnd12h;
-            oneDaysTimer = timeUntilEnd12h;
+            dayTimer = oneDayToSecond / 2;
         }
     }
 
@@ -53,70 +62,15 @@ public class Timer : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            // If the first day in new game
-            if (daysCount == 0)
+            // Count down timer
+            dayTimer -= lastFrameTime;
+
+            // Reset day timer and days count after a day
+            if (dayTimer <= 0)
             {
-                StartTimersInFirstDay();
-            }
-            // If other than first day
-            else
-            {
-                RunTimersInNormal();
+                dayTimer = oneDayToSecond;
+                daysCount += 1;
             }
         }
     }
-
-    void StartTimersInFirstDay()
-    {
-        oneDaysTimer -= lastFrameTime;
-        
-        // When over 18h in game
-        if (oneDaysTimer <= timeUntilEnd12h / 2)
-        {
-            // Switch on night state at 18h
-            if (dayState == DayState.Day)
-            {
-                dayState = DayState.Night;
-            }
-            // Start the day/night timer at 18h
-            dayNightTimer -= lastFrameTime;
-        }
-
-        // When 24 night in game
-        if (oneDaysTimer <= 0)
-        {
-            daysCount = 1;
-            oneDaysTimer = timeUntilEndDay;
-        }
-    }
-
-    void RunTimersInNormal()
-    {
-        // Count timer
-        oneDaysTimer -= lastFrameTime;
-        dayNightTimer -= lastFrameTime;
-
-        // Swith day/night state when day/night timer is run out and reset timer
-        if (dayNightTimer <= 0)
-        {
-            dayNightTimer = timeUntilEnd12h;
-            if (dayState == DayState.Day)
-            {
-                dayState = DayState.Night;
-            }
-            else
-            {
-                dayState = DayState.Day;
-            }
-        }
-
-        // Reset day timer and days count after a day
-        if (oneDaysTimer <= 0)
-        {
-            oneDaysTimer = timeUntilEndDay;
-            daysCount += 1;
-        }
-
-    }
-
 }
