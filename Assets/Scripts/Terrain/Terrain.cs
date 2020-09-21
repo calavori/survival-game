@@ -46,8 +46,6 @@ public class TerrainDetail
         // Get material of map to get height of each regions
         MeshRenderer meshRenderer = mesh.GetComponent<MeshRenderer>();
         Material material = meshRenderer.material;
-        float sandToLandHeight = material.GetFloat("Vector1_781E3A14");
-        float landToHighLandHeight = material.GetFloat("Vector1_B2A71F2B");
     }
 
     // Get coord of y by x and z

@@ -12,6 +12,7 @@ public class MapGenerator : MonoBehaviour
 
     public NoiseData noiseData;
     public TerrainData terrainData;
+    public TextureData textureData;
 
     public Material terrainMaterial;
 
@@ -31,6 +32,12 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    void OnTextureValuesUpdated()
+    {
+        textureData.ApplyToMaterial(terrainMaterial);
+    }
+
+
     public void Generate()
     {
         // Generate map
@@ -38,6 +45,7 @@ public class MapGenerator : MonoBehaviour
         MapDisplay display = FindObjectOfType<MapDisplay>();
 
         display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap, terrainData.meshHeightMutiplier, terrainData.meshHeightCurve, levelOfDetail));
+        textureData.ApplyToMaterial(terrainMaterial);
     }
 
     
@@ -56,6 +64,7 @@ public class MapGenerator : MonoBehaviour
         else if (drawMode == DrawMode.Mesh)       // Mesh map
         {
             display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap, terrainData.meshHeightMutiplier, terrainData.meshHeightCurve, levelOfDetail));
+            textureData.ApplyToMaterial(terrainMaterial);
         }
         else if (drawMode == DrawMode.FallOff)
         {
@@ -91,7 +100,7 @@ public class MapGenerator : MonoBehaviour
                 float currentHeight = noiseMap[x, y];
             }
         }
-        
+        textureData.UpdateMeshHeights(terrainMaterial, terrainData.minHeight, terrainData.maxHeight);
 
         return new MapData(noiseMap);
     }
@@ -109,7 +118,11 @@ public class MapGenerator : MonoBehaviour
             noiseData.OnValuesUpdated -= OnValuesUpdated;
             noiseData.OnValuesUpdated += OnValuesUpdated;
         }
-        
+        if (textureData != null)
+        {
+            textureData.OnValuesUpdated -= OnTextureValuesUpdated;
+            textureData.OnValuesUpdated += OnTextureValuesUpdated;
+        }
     }
 }
 

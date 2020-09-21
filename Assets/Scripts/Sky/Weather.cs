@@ -73,7 +73,7 @@ public class Weather : MonoBehaviour
         }
         else
         {
-            rainScript.RainIntensity = Random.Range(0.05f, 0.68f);
+            rainScript.RainIntensity = 0.2f;
             rainScript.EnableWind = true;
         }
     }
