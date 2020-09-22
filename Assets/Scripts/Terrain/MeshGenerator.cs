@@ -42,7 +42,7 @@ public class MeshGenerator
             }
         }
 
-        meshData.FlatShading();
+        //meshData.FlatShading();
         return meshData;
     }
 }
@@ -74,21 +74,21 @@ public class MeshData
     }
 
     // Flatshading for low poly
-    public void FlatShading()
-    {
-        Vector3[] flatShadedVertices = new Vector3[triangles.Length];
-        Vector2[] flatShadedUvs = new Vector2[triangles.Length];
+    //public void FlatShading()
+    //{
+    //   Vector3[] flatShadedVertices = new Vector3[triangles.Length];
+    //    Vector2[] flatShadedUvs = new Vector2[triangles.Length];
 
-        for (int i = 0; i < triangles.Length; i++)
-        {
-            flatShadedVertices[i] = vertices[triangles[i]];
-            flatShadedUvs[i] = uvs[triangles[i]];
-            triangles[i] = i;
-        }
+    //    for (int i = 0; i < triangles.Length; i++)
+    //   {
+    //        flatShadedVertices[i] = vertices[triangles[i]];
+    //        flatShadedUvs[i] = uvs[triangles[i]];
+    //        triangles[i] = i;
+    //    }
 
-        vertices = flatShadedVertices;
-        uvs = flatShadedUvs;
-    }
+    //    vertices = flatShadedVertices;
+    //    uvs = flatShadedUvs;
+    //}
 
     public Mesh CreateMesh()
     {
