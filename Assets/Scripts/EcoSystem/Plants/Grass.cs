@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Grass : Plant
 {
-    Timer timer;
-
-    public float AmountRemaining
+    public float Consume(float amount)
     {
-        get
+        float amountConsumed = Mathf.Max(0, Mathf.Min(growth, amount));
+        growth -= amount;
+
+        if (growth <= 0)
         {
-            return growth;
+            // Die
+            print("die");
         }
+        return amountConsumed;
     }
 }

@@ -25,9 +25,6 @@ public class TerrainDetail
     public readonly float maxX;
     public readonly float maxZ;
 
-    public readonly float sandToLandHeight;
-    public readonly float landToHighLandHeight;
-
     MeshCollider collider;
     RaycastHit hit;
 
@@ -52,13 +49,13 @@ public class TerrainDetail
     public Vector3 GetCoord(float x, float z)
     {
         Ray ray = new Ray(new Vector3(x, 50, z), Vector3.down);
-        if (collider.Raycast(ray, out hit, 2.0f * 50f))
+        if (collider.Raycast(ray, out hit, 2.0f * 50f) && hit.transform.tag == "ground")
         {
             return hit.point;
         }
         else
         {
-            return new Vector3(0,0,0);
+            return new Vector3(-1,-1,-1);
         }
     }
 }

@@ -92,13 +92,23 @@ public class Plant : LivingEntity
         }
     }
 
-    GameObject SpawnNewGrass()
+    void SpawnNewGrass()
     {
         // Todo Control number
-        // Todo Check enviroment to see if any object in that position
+        
+        // Random spawn place
         float xSpawn = transform.localPosition.x + Random.Range(distance, reproductRadius) * ((Random.Range(0, 2) == 0) ? 1 : -1);
         float zSpawn = transform.localPosition.z + Random.Range(distance, reproductRadius) * ((Random.Range(0, 2) == 0) ? 1 : -1);
-        GameObject newGrass = Instantiate(gameObject, terrainDetail.GetCoord(xSpawn, zSpawn), Quaternion.identity);
-        return newGrass;
+        Vector3 spawnPosition = terrainDetail.GetCoord(xSpawn, zSpawn);
+        // Spawn new plant if position is valid
+        if (spawnPosition.y != -1)
+        {
+            // Spawn object
+            GameObject newGrass = Instantiate(gameObject, new Vector3(-1, -1, -1), Quaternion.identity);
+            // Reset growth to 0
+            Plant newGrassScript = newGrass.GetComponent<Plant>();
+            newGrassScript.growth = 0;
+            newGrassScript.GetComponent<Plant>().Init(spawnPosition);
+        }
     }
 }
